@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz PoWiśle — dla Nati 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky"></div>
+<div class="hills"></div>
+<div class="flowers"></div>
+
+<main id="app">
+
+  <!-- EKRAN POWITALNY -->
+  <section class="card screen active" id="screen-welcome">
+    <div class="balloons-row">
+      <span class="balloon b1"></span>
+      <span class="balloon b2"></span>
+      <span class="balloon b3"></span>
+      <span class="balloon b4"></span>
+      <span class="balloon b5"></span>
+    </div>
+    <h1 class="title-script">dla Nati <span class="heart">💗</span></h1>
+    <p class="subtitle">od Hani i Heli</p>
+    <div class="welcome-box">
+      <p>Cześć Nati! 🌸</p>
+      <p>Przygotowałyśmy dla Ciebie mały quiz o naszej wspólnej okolicy - <strong>Powiślu</strong>.</p>
+      <p>Jest tylko 5 pytań. Damy radę razem!</p>
+    </div>
+    <button class="btn-primary" onclick="goTo('q1')">Zaczynamy! ✨</button>
+    <p class="hint-small">Quizem PoWiśle 💧</p>
+  </section>
+
+  <!-- PYTANIE 1 -->
+  <section class="card screen" id="screen-q1">
+    <div class="progress"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <h2 class="q-number">Pytanie 1 z 5</h2>
+    <h3 class="q-text">Na którym kilometrze Wisły jesteśmy? 🌊</h3>
+    <p class="q-hint">Wpisz liczbę (podpowiedź: zobacz złoty napis na ścianie nad rzeką!)</p>
+    <input type="number" id="ans-q1" class="text-input" placeholder="np. 100" inputmode="numeric">
+    <button class="btn-primary" onclick="checkQ1()">Sprawdź odpowiedź</button>
+    <p class="feedback" id="fb-q1"></p>
+  </section>
+
+  <!-- PYTANIE 2 -->
+  <section class="card screen" id="screen-q2">
+    <div class="progress"><span class="dot done"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <h2 class="q-number">Pytanie 2 z 5</h2>
+    <h3 class="q-text">Gdzie znajduje się najbliższy pomnik Syrenki? 🧜‍♀️</h3>
+    <div class="options" id="opts-q2">
+      <button class="option" data-correct="false" onclick="checkOption(this,'q2','q3')">Na Rynku Starego Miasta</button>
+      <button class="option" data-correct="true" onclick="checkOption(this,'q2','q3')">Nad Wisłą przy Moście Świętokrzyskim</button>
+      <button class="option" data-correct="false" onclick="checkOption(this,'q2','q3')">W Łazienkach Królewskich</button>
+      <button class="option" data-correct="false" onclick="checkOption(this,'q2','q3')">Na Placu Zamkowym</button>
+    </div>
+    <p class="feedback" id="fb-q2"></p>
+  </section>
+
+  <!-- PYTANIE 3 -->
+  <section class="card screen" id="screen-q3">
+    <div class="progress"><span class="dot done"></span><span class="dot done"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+    <h2 class="q-number">Pytanie 3 z 5</h2>
+    <h3 class="q-text">Gdzie znajdują się najbliższe fontanny? ⛲</h3>
+    <p class="q-hint">Te między naszymi domami!</p>
+    <div class="options" id="opts-q3">
+      <button class="option" data-correct="false" onclick="checkOption(this,'q3','q4')">W Parku Skaryszewskim</button>
+      <button class="option" data-correct="false" onclick="checkOption(this,'q3','q4')">Pod Pałacem Kultury</button>
+      <button class="option" data-correct="true" onclick="checkOption(this,'q3','q4')">W Elektrowni Powiśle</button>
+      <button class="option" data-correct="false" onclick="checkOption(this,'q3','q4')">Na Krakowskim Przedmieściu</button>
+    </div>
+    <p class="feedback" id="fb-q3"></p>
+  </section>
+
+  <!-- PYTANIE 4 -->
+  <section class="card screen" id="screen-q4">
+    <div class="progress"><span class="dot done"></span><span class="dot done"></span><span class="dot done"></span><span class="dot active"></span><span class="dot"></span></div>
+    <h2 class="q-number">Pytanie 4 z 5</h2>
+    <h3 class="q-text">Co to jest? 🤔</h3>
+    <p class="q-hint">Stoi przy ulicy Leszczyńskiej, obok Centrum Nauki Kopernik.</p>
+    <div class="photo-frame">
+      <img src="img/bunkier.jpeg" alt="Tajemniczy obiekt na Leszczyńskiej">
+    </div>
+    <div class="options" id="opts-q4">
+      <button class="option" data-correct="false" onclick="checkOption(this,'q4','q5')">Stary komin fabryczny</button>
+      <button class="option" data-correct="true" onclick="checkOption(this,'q4','q5')">Stanowisko strzelnicze (bunkier)</button>
+      <button class="option" data-correct="false" onclick="checkOption(this,'q4','q5')">Pomnik historyczny</button>
+      <button class="option" data-correct="false" onclick="checkOption(this,'q4','q5')">Studnia z czasów wojny</button>
+    </div>
+    <p class="feedback" id="fb-q4"></p>
+  </section>
+
+  <!-- PYTANIE 5 -->
+  <section class="card screen" id="screen-q5">
+    <div class="progress"><span class="dot done"></span><span class="dot done"></span><span class="dot done"></span><span class="dot done"></span><span class="dot active"></span></div>
+    <h2 class="q-number">Pytanie 5 z 5</h2>
+    <h3 class="q-text">Elektrownia była miesiąc temu obstukiwana młoteczkami. 🔨</h3>
+    <p class="q-hint">Prawda czy fałsz?</p>
+    <div class="options tf">
+      <button class="option big" data-correct="true" onclick="checkOption(this,'q5','end')">✅ Prawda</button>
+      <button class="option big" data-correct="false" onclick="checkOption(this,'q5','end')">❌ Fałsz</button>
+    </div>
+    <p class="feedback" id="fb-q5"></p>
+  </section>
+
+  <!-- EKRAN KOŃCOWY -->
+  <section class="card screen end-screen" id="screen-end">
+    <div class="confetti"></div>
+    <h1 class="title-script big">Brawo Nati! 🎉</h1>
+    <p class="score-line">Twój wynik: <strong><span id="score">0</span> / 5</strong></p>
+
+    <div class="photo-frame end-photo">
+      <img src="img/dziewczynki-512.jpeg" alt="Hania i Hela przy 512">
+      <p class="caption">Witamy w Gangu 512, Nati! <br> Hania i Hela 💗</p>
+    </div>
+
+    <div class="invitation">
+      <h2>🗺️ Zapraszamy Cię na PODCHODY!</h2>
+      <p>Razem z naszymi rodzicami i Twoimi pójdziemy na <strong>spacer-treasure hunt</strong> po Powiślu.</p>
+      <p>Pokażemy Ci nasze ulubione miejsca i opowiemy o nich — żebyś czuła się tu jak u siebie. ✨</p>
+      <div class="treasures">
+        <span>🌊 Wisła</span>
+        <span>⛲ Przygody</span>
+        <span>🏛️ Tajemnicze miejsca</span>
+        <span>🍦 Słodki finał</span>
+      </div>
+      <p class="big-heart">Nie możemy się doczekać!<br>— Hania i Hela 💗</p>
+    </div>
+
+    <button class="btn-secondary" onclick="restart()">Zagraj jeszcze raz 🔄</button>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
